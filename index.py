@@ -1,11 +1,22 @@
+from flask import Flask, render_template, Response
 import time
 
-def print_integer_every_second():
-    count = 0
-    while True:
-        print(count)
-        count += 1
-        time.sleep(1)
+app = Flask(__name__, template_folder='templates')
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/data')
+def data():
+    def generate():
+        count = 0
+        while True:
+            yield f"data: {count}\n\n"
+            count += 1
+            time.sleep(1)
+
+    return Response(generate(), mimetype='text/event-stream')
 
 if __name__ == "__main__":
-    print_integer_every_second()
+    app.run(host='localhost', port=8888, debug=True)

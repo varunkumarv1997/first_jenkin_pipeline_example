@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integer Stream</title>
+</head>
+<body>
+    <h1>Integer Stream</h1>
+    <pre id="integer-stream"></pre>
+    <script>
+        var source = new EventSource('/data');
+        var integerStream = document.getElementById('integer-stream');
+
+        source.onmessage = function(event) {
+            integerStream.textContent += event.data + '\n';
+        };
+    </script>
+</body>
+</html>
