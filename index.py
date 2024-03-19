@@ -12,7 +12,7 @@ def data():
     def generate():
         count = 0
         while True:
-            yield f"You are at Data endpoint: {count}\n\n"
+            yield f"data: {count}\n\n"
             count += 1
             time.sleep(1)
 
