@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'gpalve/python-jenkin-demo'
-        CONTAINER_NAME = 'minikube'
         KUBECONFIG = 'C:\\Users\\ABC\\.kube\\config'
         MINIKUBE_HOME = 'C:\\Users\\ABC\\.minikube'
     }
@@ -54,14 +53,6 @@ pipeline {
                 }
             }
         }
-
-        // stage('Clean Up') {
-        //     steps {
-        //         // Clean up after deployment
-        //         bat "kubectl --kubeconfig=${KUBECONFIG} delete pod ${CONTAINER_NAME}"
-        //         bat "docker rmi ${DOCKER_IMAGE}"
-        //     }
-        // }
     }
 
     post {
